@@ -82,13 +82,13 @@ public class ReaderWriter {
         String[] splitData = string.split(COMMA_DELIMITER);
         int cost = Integer.parseInt(splitData[0]);
 
-        Customer customer = splitData[1];
-        Show show = splitData[2];
+//        Customer customer = splitData[1];
+//        Show show = splitData[2];
         int rowNumber = Integer.parseInt(splitData[3]);
         int seatNumber = Integer.parseInt(splitData[4]);
 
-        Booking contact = new Booking(cost,customer,show,rowNumber,seatNumber);
-        return contact;
+//        Booking contact = new Booking(cost,customer,show,rowNumber,seatNumber);
+        return null;
     }
 
 
