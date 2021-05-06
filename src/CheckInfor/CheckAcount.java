@@ -6,9 +6,11 @@ import java.util.regex.Pattern;
 public class CheckAcount {
 
 
-    public static final String CHECK_ACCOUNT ="^[A-Za-z]\\\\w{5,29}$";
+    public static final String CHECK_ACCOUNT ="^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
     public static final String CHECK_ID_RANDOM = "\\d{4}-\\d{4}";
-    public static final Pattern CHECK_GMAIL = Pattern.compile("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\\\.[A-Za-z0-9]+)$",Pattern.CASE_INSENSITIVE);
+    public static final Pattern CHECK_GMAIL = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z]{2,6}$"
+            ,
+            Pattern.CASE_INSENSITIVE);
     private static Pattern pattern;
     private static Matcher matcher;
     public static boolean checkAccount(String account){

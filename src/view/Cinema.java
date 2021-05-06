@@ -46,7 +46,8 @@ public class Cinema
 	                    option = select.nextInt();
 	                    if (option==1){
 							if (!acountManager.loginAccount()){
-								System.out.println("");
+								System.out.println("login faile");
+
 							}else {
 								acountManager.createAccount();
 							}

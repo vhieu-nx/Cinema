@@ -14,7 +14,15 @@ public class Booking {
 		this.costumer = costumer;
 		this.show = show;
 	}
-	
+
+	public Booking(int cost, Customer costumer, Show show, int rowNumber, int seatNumber) {
+		this.cost = cost;
+		this.costumer = costumer;
+		this.show = show;
+		this.rowNumber = rowNumber;
+		this.seatNumber = seatNumber;
+	}
+
 	public int getCost()
 	{
 		if(show.getTheatre().getRows().get(rowNumber).getRowClass() == 1) {
@@ -48,7 +56,19 @@ public class Booking {
     		return true;
     	}
 	}
-	
+
+	public Show getShow() {
+		return show;
+	}
+
+	public int getRowNumber() {
+		return rowNumber;
+	}
+
+	public int getSeatNumber() {
+		return seatNumber;
+	}
+
 	public boolean unreserveSeat()
 	{
     		show.getTheatre().getRows().get(rowNumber).getSeats().get(seatNumber).unreserve();
