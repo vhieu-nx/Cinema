@@ -10,9 +10,27 @@ import java.util.*;
 	 
 public class Cinema
 {
+	public static void loginCinema(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to Cinema by Mr.Nguyen");
+		while (true){
+			System.out.println("1.Login");
+			System.out.println("2.Registration");
+			System.out.println("3.Exit");
+			String choose = scanner.nextLine();
+			switch (choose){
+				case "1":
+					if (!acountManager.loginAccount()){
+						System.out.println("Login fails, username or password is incorrect");
+					}else {
+
+					}
+
+			}
+		}
+	}
 	static final AccountManager acountManager = AccountManager.getINSTANCE();
-	        public static void main (String[] args)
-	        {
+	        public static void main (String[] args) {
 	                int option = 0;
 	                ArrayList<Show >shows = new ArrayList<Show>();
 	                ArrayList<Theatre> theatres = new ArrayList<Theatre>();
@@ -22,25 +40,13 @@ public class Cinema
 	                Scanner choice = new Scanner(System.in);
 	            do
 	            {  
-	                System.out.println("------------------------------------");
-	                System.out.println(":view.Cinema model.Booking System by Mr.Nguyen HandSome:");
-	                System.out.println("------------------------------------\n");
-	                System.out.println("Please Enter 1 Login");
-	                System.out.println("Please Enter 2 Registration");
-	                System.out.println("Please Enter 3 to Add Theatre");
-	                System.out.println("Please Enter 4 to Add Show");
-	                System.out.println("Please Enter 5 to Display Shows");
-	                System.out.println("Please Enter 6 to Make Booking");
-	                System.out.println("Please Enter 7 to Cancel Booking");
-	                System.out.println("Please Enter 8 to writer file");
-	                System.out.println("Please Enter 9 to reader file");
-	                System.out.println("Please Enter 10 to Exit\n");
+	                DisplayMenu.displayMenu();
 	         
 	                System.out.print("Enter Option: ");
 	                    option = select.nextInt();
 	                    if (option==1){
 							if (!acountManager.loginAccount()){
-								System.out.println("Login fails, username or password is incorrect");
+								System.out.println("");
 							}else {
 								acountManager.createAccount();
 							}
@@ -187,5 +193,6 @@ public class Cinema
 	                    }
 	                                                                	                                	                                	                               
 	              }while(true);	       
-	        }	        
+	        }
+
 }
