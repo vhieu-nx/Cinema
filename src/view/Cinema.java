@@ -1,7 +1,16 @@
+package view;
+
+import controller.AccountManager;
+import model.Booking;
+import model.Customer;
+import model.Show;
+import model.Theatre;
+
 import java.util.*;
 	 
 public class Cinema
-{	
+{
+	static final AccountManager acountManager = AccountManager.getINSTANCE();
 	        public static void main (String[] args)
 	        {
 	                int option = 0;
@@ -11,28 +20,36 @@ public class Cinema
 	                ArrayList<Customer> customers = new ArrayList<Customer>();
 	                Scanner select = new Scanner(System.in);
 	                Scanner choice = new Scanner(System.in);
-	                
-		        	//Test Objects
-//	        	    Theatre testTheatre = new Theatre(1, "Main Theatre");
-//	        	    testTheatre.createRows(1, 10, 7);
-//                	theatres.add(testTheatre);
-//                	shows.add(new Show("Der SpongeBob Schwammkopf - Film", "21.10.2011", theatres.get(0)));
 	            do
 	            {  
 	                System.out.println("------------------------------------");
-	                System.out.println(":Cinema Booking System by Mr.Nguyen HandSome:");
+	                System.out.println(":view.Cinema model.Booking System by Mr.Nguyen HandSome:");
 	                System.out.println("------------------------------------\n");
-	                System.out.println("Please Enter 1 to Add Theatre");
-	                System.out.println("Please Enter 2 to Add Show");
-	                System.out.println("Please Enter 3 to Display Shows");
-	                System.out.println("Please Enter 4 to Make Booking");
-	                System.out.println("Please Enter 5 to Cancel Booking");
-	                System.out.println("Please Enter 6 to Exit\n");
+	                System.out.println("Please Enter 1 Login");
+	                System.out.println("Please Enter 2 Registration");
+	                System.out.println("Please Enter 3 to Add Theatre");
+	                System.out.println("Please Enter 4 to Add Show");
+	                System.out.println("Please Enter 5 to Display Shows");
+	                System.out.println("Please Enter 6 to Make Booking");
+	                System.out.println("Please Enter 7 to Cancel Booking");
+	                System.out.println("Please Enter 8 to writer file");
+	                System.out.println("Please Enter 9 to reader file");
+	                System.out.println("Please Enter 10 to Exit\n");
 	         
 	                System.out.print("Enter Option: ");
 	                    option = select.nextInt();
-	                    
-	                    if(option==1)
+	                    if (option==1){
+							if (!acountManager.loginAccount()){
+								System.out.println("Login fails, username or password is incorrect");
+							}else {
+								acountManager.createAccount();
+							}
+						}
+	                    if (option==2){
+	                    	acountManager.createAccount();
+//	                    	break;
+						}
+	                    if(option==3)
 	                    {
 	                    	System.out.println("ADD THEATRE Selected");
 	                        System.out.println("-------------------------\n");
@@ -48,13 +65,13 @@ public class Cinema
 	                    	theatres.add(theatre);
 	                    }
 	                     
-	                    if(option==2)
+	                    if(option==4)
 	                    {	                        
 	                    	System.out.println("ADD SHOW Selected");
 	                        System.out.println("-------------------------\n");
-	                    	System.out.println("Enter the date of the Show [DD/MM/YYYY]:");
+	                    	System.out.println("Enter the date of the model.Show [DD/MM/YYYY]:");
 	                        String showDate = new Scanner(System.in).nextLine();
-	                        System.out.print("Enter name of Show: \n");
+	                        System.out.print("Enter name of model.Show: \n");
 	                        String showName = new Scanner(System.in).nextLine();
 	                        System.out.println("Select a theatre by typing the number:");
 	                        for (int i=0; i < theatres.size(); i++) 
@@ -66,24 +83,24 @@ public class Cinema
 	                    }
 	                    
 	                    
-	                    if(option==3)
+	                    if(option==5)
 	                    {
 	                        System.out.println("DISPLAY SHOWS Selected");
 	                        System.out.println("-------------------------\n");
 	                        for (int i = 0; i < shows.size(); i++)
 	                        {
 	                        	int showNumber = i+1;
-	                        	System.out.println("Show Number: " + showNumber);;
-	                            System.out.println("Show Name: " + shows.get(i).getShowName());
-	                            System.out.println("Show Date: " + shows.get(i).getShowDate());
-	                            //System.out.println("Seat Status:" + shows.get(i).getFreeSeatsCount());
+	                        	System.out.println("model.Show Number: " + showNumber);;
+	                            System.out.println("model.Show Name: " + shows.get(i).getShowName());
+	                            System.out.println("model.Show Date: " + shows.get(i).getShowDate());
+	                            //System.out.println("model.Seat Status:" + shows.get(i).getFreeSeatsCount());
 	                            System.out.println("\n");
 	                        }
-	                        System.out.println("End of Show List.\n");
+	                        System.out.println("End of model.Show List.\n");
 	                    }
 	                    
 	                    
-	                    if(option==4)
+	                    if(option==6)
 	                    {
 	                        System.out.println("MAKE BOOKING Selected");
 	                        System.out.println("-------------------------\n");
@@ -94,9 +111,9 @@ public class Cinema
 	                        for (int i = 0; i< shows.size(); i++)
 	                        {	                    
 	                        	int showNumber = i+1;
-	                        	System.out.println("Show Number: " + showNumber);;
-	                            System.out.println("Show Name:   " + shows.get(i).getShowName());
-	                            System.out.println("Show Date:   " + shows.get(i).getShowDate());
+	                        	System.out.println("model.Show Number: " + showNumber);;
+	                            System.out.println("model.Show Name:   " + shows.get(i).getShowName());
+	                            System.out.println("model.Show Date:   " + shows.get(i).getShowDate());
 	                            System.out.print("\n");
 	                        }
 	                        System.out.println("-------------------------");
@@ -139,7 +156,7 @@ public class Cinema
 	                        System.out.println();
 	                    }
 	                    
-	                    if(option==5)
+	                    if(option==7)
 	                    {
 	                        System.out.println("CANCEL BOOKING Selected");
 	                        System.out.println("-------------------------\n");
@@ -164,7 +181,7 @@ public class Cinema
 	                        System.out.println();
 	                    }
 	                    
-	                    if(option==6)
+	                    if(option==8)
 	                    {
 	                    	System.exit(0);
 	                    }
