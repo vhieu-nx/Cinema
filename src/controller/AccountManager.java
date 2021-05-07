@@ -24,7 +24,7 @@ public class AccountManager {
     private String enterNameAccount(){
         String name = "";
         do{
-            System.out.println("Enter your name account");
+            System.out.println("Enter your username account");
             name = new Scanner(System.in).nextLine();
         }while (!name.matches(CheckAcount.CHECK_ACCOUNT));
         return name;
@@ -47,12 +47,11 @@ public class AccountManager {
         account.setUsername(enterNameAccount());
         account.setPassword(enterPassword());
         account.setEmail(enterEmail());
-        String result = checkInfor(enterNameAccount(),enterPassword(),enterEmail());
+        String result = checkInfor(account.getUsername(),account.getPassword(),account.getEmail());
         if (result.equals("Save successfully")){
             System.out.println(result);
             listAccount.add(account);
         }
-//        listAccount.add(account);
     }
     public boolean loginAccount (){
         String username = enterNameAccount();

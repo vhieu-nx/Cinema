@@ -17,11 +17,12 @@ public class Cinema
 
 	public static void loginCinema(){
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Welcome to Cinema by Mr.Nguyen");
+		System.out.println("Welcome to Cinema by Mr.Nguyen. \n Please login to perform the manager function. \nIf you don't have an account, please login to proceed. \nThanks so much");
 		while (true){
 			System.out.println("1.Login");
 			System.out.println("2.Registration");
 			System.out.println("3.Exit");
+			System.out.print("\nEnter Option: ");
 			String chooseSelectOptionAccount = scanner.nextLine();
 			switch (chooseSelectOptionAccount){
 				case "1":
@@ -108,7 +109,7 @@ public class Cinema
 						System.out.println("model.Show Number: " + showNumber);;
 						System.out.println("model.Show Name: " + shows.get(i).getShowName());
 						System.out.println("model.Show Date: " + shows.get(i).getShowDate());
-						System.out.println("model.Seat Status:" + shows.get(i).getFreeSeatsCount());
+//						System.out.println("model.Seat Status:" + shows.get(i).getFreeSeatsCount());
 						System.out.println("\n");
 					}
 					System.out.println("End of model.Show List.\n");
@@ -167,7 +168,7 @@ public class Cinema
 						}
 					}
 					System.out.println("Costumer ID: " + customer.getId());
-					System.out.println("Total costs: " + totalCost + " Euro");
+					System.out.println("Total costs: " + totalCost + " ĐôLaMỹ");
 					System.out.println();
 				}
 

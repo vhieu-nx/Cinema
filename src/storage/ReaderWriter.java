@@ -73,21 +73,20 @@ public class ReaderWriter {
         }
         return bookings;
     }
-    public static Booking splitString(String string) {
+    public static Booking splitString(Object object) {
         ////int cost;
         //                //	Customer costumer;
         //                //	Show show;
         //                //	int rowNumber;
         //                //	int seatNumber;
-        String[] splitData = string.split(COMMA_DELIMITER);
-        int cost = Integer.parseInt(splitData[0]);
 
-//        Customer customer = splitData[1];
-//        Show show = splitData[2];
-        int rowNumber = Integer.parseInt(splitData[3]);
-        int seatNumber = Integer.parseInt(splitData[4]);
+////        String[] splitData = object.
+//        int cost = Integer.parseInt(splitData[0]);
+//
+//        int rowNumber = Integer.parseInt(splitData[3]);
+//        int seatNumber = Integer.parseInt(splitData[4]);
 
-//        Booking contact = new Booking(cost,customer,show,rowNumber,seatNumber);
+//        Booking bookings = new Booking(cost,customer,show,rowNumber,seatNumber);
         return null;
     }
 

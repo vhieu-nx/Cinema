@@ -56,4 +56,17 @@ public class Customer {
 		System.out.println(street + " " + streetNumber);
 		System.out.println(plz + " " + city);
 	}
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", surname='" + surname + '\'' +
+				", street='" + street + '\'' +
+				", streetNumber=" + streetNumber +
+				", plz=" + plz +
+				", city='" + city + '\'' +
+				'}';
+	}
 }
