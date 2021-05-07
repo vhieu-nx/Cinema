@@ -12,7 +12,7 @@ public class Cinema
 {
 	static final AccountManager acountManager = AccountManager.getINSTANCE();
 	public static void main (String[] args) {
-		mainMenuCinema();
+		loginCinema();
 	}
 
 	public static void loginCinema(){
@@ -30,6 +30,7 @@ public class Cinema
 					}else {
 						System.out.println("Login successfully");
 						mainMenuCinema();
+
 					}
 					break;
 				case "2":
@@ -59,12 +60,11 @@ public class Cinema
 
 			System.out.print("Enter Option: ");
 				option = select.nextInt();
-				if (option==1){
-//					System.out.println(acountManager.getInformation());
-					loginCinema();
-
-				}
-				if(option==3)
+//				if (option==1){
+////					System.out.println(acountManager.getInformation());
+//					loginCinema();
+//				}
+				if(option==1)
 				{
 					System.out.println("ADD THEATRE Selected");
 					System.out.println("-------------------------\n");
@@ -80,7 +80,7 @@ public class Cinema
 					theatres.add(theatre);
 				}
 
-				if(option==4)
+				if(option==2)
 				{
 					System.out.println("ADD SHOW Selected");
 					System.out.println("-------------------------\n");
@@ -98,7 +98,7 @@ public class Cinema
 				}
 
 
-				if(option==5)
+				if(option==3)
 				{
 					System.out.println("DISPLAY SHOWS Selected");
 					System.out.println("-------------------------\n");
@@ -115,7 +115,7 @@ public class Cinema
 				}
 
 
-				if(option==6)
+				if(option==4)
 				{
 					System.out.println("MAKE BOOKING Selected");
 					System.out.println("-------------------------\n");
@@ -171,7 +171,7 @@ public class Cinema
 					System.out.println();
 				}
 
-				if(option==7)
+				if(option==5)
 				{
 					System.out.println("CANCEL BOOKING Selected");
 					System.out.println("-------------------------\n");
@@ -196,7 +196,7 @@ public class Cinema
 					System.out.println();
 				}
 
-				if(option==8)
+				if(option==6)
 				{
 					System.exit(0);
 				}

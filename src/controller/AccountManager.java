@@ -44,11 +44,15 @@ public class AccountManager {
     }
     public void createAccount(){
         Account account = new Account();
+        account.setUsername(enterNameAccount());
+        account.setPassword(enterPassword());
+        account.setEmail(enterEmail());
         String result = checkInfor(enterNameAccount(),enterPassword(),enterEmail());
         if (result.equals("Save successfully")){
             System.out.println(result);
             listAccount.add(account);
         }
+//        listAccount.add(account);
     }
     public boolean loginAccount (){
         String username = enterNameAccount();
