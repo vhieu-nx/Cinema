@@ -106,13 +106,13 @@ public class Cinema
 					for (int i = 0; i < shows.size(); i++)
 					{
 						int showNumber = i+1;
-						System.out.println("model.Show Number: " + showNumber);;
-						System.out.println("model.Show Name: " + shows.get(i).getShowName());
-						System.out.println("model.Show Date: " + shows.get(i).getShowDate());
+						System.out.println("Show Number: " + showNumber);;
+						System.out.println("Show Name: " + shows.get(i).getShowName());
+						System.out.println("Show Date: " + shows.get(i).getShowDate());
 //						System.out.println("model.Seat Status:" + shows.get(i).getFreeSeatsCount());
 						System.out.println("\n");
 					}
-					System.out.println("End of model.Show List.\n");
+
 				}
 
 
@@ -127,9 +127,9 @@ public class Cinema
 					for (int i = 0; i< shows.size(); i++)
 					{
 						int showNumber = i+1;
-						System.out.println("model.Show Number: " + showNumber);;
-						System.out.println("model.Show Name:   " + shows.get(i).getShowName());
-						System.out.println("model.Show Date:   " + shows.get(i).getShowDate());
+						System.out.println("Show Number: " + showNumber);;
+						System.out.println("Show Name:   " + shows.get(i).getShowName());
+						System.out.println("Show Date:   " + shows.get(i).getShowDate());
 						System.out.print("\n");
 					}
 					System.out.println("-------------------------");
