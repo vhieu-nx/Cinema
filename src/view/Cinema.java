@@ -10,6 +10,10 @@ import java.util.*;
 	 
 public class Cinema
 {
+	static final AccountManager acountManager = AccountManager.getINSTANCE();
+	public static void main (String[] args) {
+		mainMenuCinema();
+	}
 
 	public static void loginCinema(){
 		Scanner scanner = new Scanner(System.in);
@@ -18,12 +22,13 @@ public class Cinema
 			System.out.println("1.Login");
 			System.out.println("2.Registration");
 			System.out.println("3.Exit");
-			String choose = scanner.nextLine();
-			switch (choose){
+			String chooseSelectOptionAccount = scanner.nextLine();
+			switch (chooseSelectOptionAccount){
 				case "1":
 					if (!acountManager.loginAccount()){
 						System.out.println("Login fails, username or password is incorrect");
 					}else {
+						System.out.println("Login successfully");
 						mainMenuCinema();
 					}
 					break;
@@ -38,10 +43,7 @@ public class Cinema
 			}
 		}
 	}
-	static final AccountManager acountManager = AccountManager.getINSTANCE();
-	        public static void main (String[] args) {
-				mainMenuCinema();
-			}
+
 
 	private static void mainMenuCinema() {
 		int option = 0;
@@ -58,9 +60,9 @@ public class Cinema
 			System.out.print("Enter Option: ");
 				option = select.nextInt();
 				if (option==1){
-					System.out.println(acountManager.getInformation());
+//					System.out.println(acountManager.getInformation());
 					loginCinema();
-					break;
+
 				}
 				if(option==3)
 				{
@@ -106,7 +108,7 @@ public class Cinema
 						System.out.println("model.Show Number: " + showNumber);;
 						System.out.println("model.Show Name: " + shows.get(i).getShowName());
 						System.out.println("model.Show Date: " + shows.get(i).getShowDate());
-						//System.out.println("model.Seat Status:" + shows.get(i).getFreeSeatsCount());
+						System.out.println("model.Seat Status:" + shows.get(i).getFreeSeatsCount());
 						System.out.println("\n");
 					}
 					System.out.println("End of model.Show List.\n");
