@@ -1,6 +1,10 @@
 package model;
 
-public class Account {
+import storage.ReaderWriter;
+
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private String username;
     private String password;
     private String email;
@@ -45,4 +49,5 @@ public class Account {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'';
     }
+
 }

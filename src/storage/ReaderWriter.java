@@ -8,86 +8,47 @@ import org.w3c.dom.xpath.XPathResult;
 import java.io.*;
 import java.util.ArrayList;
 
-public class ReaderWriter {
-    private static  final String COMMA_DELIMITER = ",";
-    private static final String NEW_LINE_SEPARATOR = "\n";
-    public static final  String FILEPATH = "data/cinema.txt";
-    File file = new File(FILEPATH);
-    public void writeFile(ArrayList<Booking> bookings){
+public class ReaderWriter<E> {
+    private static ReaderWriter INSTANCE;
+    private ReaderWriter(){
+
+    }
+    public static ReaderWriter getINSTANCE(){
+        if (INSTANCE == null) INSTANCE = new ReaderWriter();
+        return INSTANCE;
+    }
+    public void writeFile(ArrayList<E> arrayList,String path){
         try {
-            FileWriter fileWriter = new FileWriter(file);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (int i = 0; i <bookings.size() ; i++) {
-                int cost = bookings.get(i).getCost();
-                Customer customer = bookings.get(i).getCostumer();
-                Show show  = bookings.get(i).getShow();
-                int rowNumber = bookings.get(i).getRowNumber();
-                int seatNumber = bookings.get(i).getSeatNumber();
-                String line = cost + COMMA_DELIMITER + customer + COMMA_DELIMITER + show + COMMA_DELIMITER
-                        + rowNumber + COMMA_DELIMITER + seatNumber + NEW_LINE_SEPARATOR;
-                //int cost;
-                //	Customer costumer;
-                //	Show show;
-                //	int rowNumber;
-                //	int seatNumber;
-                bufferedWriter.write(line);
-            }
-            bufferedWriter.close();
-            fileWriter.close();
-            System.out.println("Write File successfully");
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(arrayList);
+            objectOutputStream.close();
+            fileOutputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public ArrayList<Booking> readFile() {
-//        ArrayList<Contact> bookings = new ArrayList<>();
-//
-//        try {
-//
-//            FileInputStream fileIn = new FileInputStream(FILEPATH);
-//            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-//
-//            ArrayList<Contact> obj = (ArrayList<Contact>) objectIn.readObject();
-//
-//            System.out.println("The Object has been read from the file");
-//            objectIn.close();
-//            return obj;
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return bookings;
-//        }
-        ArrayList<Booking> bookings = new ArrayList<>();
-        try {
-            FileReader fileReader = new FileReader(FILEPATH);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                Booking booking = splitString(line);
-                bookings.add(booking);
+    public ArrayList<E> readFile(String path){
+        ArrayList<E> arrayList = new ArrayList<>();
+        File file = new File(path);
+        if (file.length() > 0){
+            try {
+                FileInputStream fileInputStream = new FileInputStream(path);
+                ObjectInputStream objectInputStream  = new ObjectInputStream(fileInputStream);
+                arrayList = (ArrayList<E>) objectInputStream.readObject();
+                objectInputStream.close();
+                fileInputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
-            bufferedReader.close();
-            fileReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return bookings;
-    }
-    public static Booking splitString(Object object) {
-        ////int cost;
-        //                //	Customer costumer;
-        //                //	Show show;
-        //                //	int rowNumber;
-        //                //	int seatNumber;
-
-////        String[] splitData = object.
-//        int cost = Integer.parseInt(splitData[0]);
-//
-//        int rowNumber = Integer.parseInt(splitData[3]);
-//        int seatNumber = Integer.parseInt(splitData[4]);
-
-//        Booking bookings = new Booking(cost,customer,show,rowNumber,seatNumber);
-        return null;
+        return arrayList;
     }
 
 

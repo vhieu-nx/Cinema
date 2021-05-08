@@ -1,15 +1,18 @@
 package controller;
 
-import CheckInfor.CheckAcount;
+import checkInfor.CheckAcount;
 import model.Account;
+import storage.ReaderWriter;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AccountManager {
-    Scanner scanner = new Scanner(System.in);
+//    Scanner scanner = new Scanner(System.in);
     private Account account;
-    private ArrayList<Account> listAccount = new ArrayList<Account>();
+
+    private ReaderWriter readerWriter = ReaderWriter.getINSTANCE();
+    private ArrayList<Account> listAccount = readerWriter.readFile("account.txt");
     private static AccountManager INSTANCE;
     private AccountManager(){
 
@@ -51,6 +54,7 @@ public class AccountManager {
         if (result.equals("Save successfully")){
             System.out.println(result);
             listAccount.add(account);
+            setWriter();
         }
     }
     public boolean loginAccount (){
@@ -78,6 +82,9 @@ public class AccountManager {
             result = "Save successfully";
         }
         return result;
+    }
+    public void setWriter(){
+        readerWriter.writeFile(listAccount,"account.txt");
     }
 
 }

@@ -1,4 +1,4 @@
-package CheckInfor;
+package checkInfor;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
