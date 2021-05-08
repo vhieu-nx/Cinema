@@ -1,6 +1,8 @@
 package model;
 
-public class Seat {
+import java.io.Serializable;
+
+public class Seat implements Serializable {
 	
 	int seatNumber;
 	boolean isReserved;

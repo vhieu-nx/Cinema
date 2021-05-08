@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Show {
+public class Show implements Serializable {
 	
 	private String showName;
 	private String showDate;

@@ -1,6 +1,5 @@
 package controller;
 
-import model.Account;
 import model.Booking;
 import model.Customer;
 import model.Show;
@@ -15,7 +14,12 @@ public class BookingCinema {
     private Booking booking;
 
     private ReaderWriter readerWriter = ReaderWriter.getINSTANCE();
-    private ArrayList<Booking> bookingArrayList = readerWriter.readFile("booking.txt");
+    private ArrayList<Booking> bookings = readerWriter.readFile("booking.txt");
+    private ArrayList<Customer> customers = readerWriter.readFile("customer.txt");
+    private ArrayList<Show> shows = readerWriter.readFile("show.txt");
+
+
+
     private static BookingCinema INSTANCE;
     private BookingCinema(){
 
@@ -25,11 +29,12 @@ public class BookingCinema {
         return INSTANCE;
     }
 
-    public   void cancelBooking(ArrayList<Booking> bookings, ArrayList<Customer> customers, Scanner choice) {
+    public  void cancelBooking() {
+
         System.out.println("CANCEL BOOKING Selected");
         System.out.println("-------------------------\n");
         System.out.print("Enter the costumer id: ");
-        int customerId = choice.nextInt();
+        int customerId = new Scanner(System.in).nextInt();
         for (Customer customer : customers) {
             if (customer.getId() == customerId)
             {
@@ -47,10 +52,7 @@ public class BookingCinema {
             }
         }
     }
-    public void makeBooking(Scanner choice) {
-        ArrayList<Show> shows = new ArrayList<>();
-        ArrayList<Customer> customers = new ArrayList<>();
-        ArrayList<Booking> bookings = new ArrayList<>();
+    public void makeBooking() {
         System.out.println("MAKE BOOKING Selected");
         System.out.println("-------------------------\n");
         Random rnd = new Random();
@@ -67,15 +69,15 @@ public class BookingCinema {
         }
         System.out.println("-------------------------");
         System.out.print("Enter the show number: ");
-        int showNumber = choice.nextInt();
+        int showNumber = new Scanner(System.in).nextInt();
         int repeat = 0;
         System.out.println();
         do {
             shows.get(showNumber-1).getTheatre().printSeatPlan();
             System.out.print("Enter the row: ");
-            int selectedRow = choice.nextInt();
+            int selectedRow = new Scanner(System.in).nextInt();
             System.out.print("Enter the seat: ");
-            int selectedSeat = choice.nextInt();
+            int selectedSeat = new Scanner(System.in).nextInt();
             System.out.println();
             Booking booking = new Booking(customer, shows.get(showNumber-1));
             if (booking.reserveSeat(selectedRow-1, selectedSeat-1)) {
@@ -87,7 +89,7 @@ public class BookingCinema {
             }
             System.out.println();
             System.out.print("Enter 1 to reserve another seat or 2 to check out: ");
-            repeat = choice.nextInt();
+            repeat = new Scanner(System.in).nextInt();
         } while (repeat == 1);
         System.out.println();
         System.out.println("Your Bill");
@@ -102,11 +104,13 @@ public class BookingCinema {
 
         }
         System.out.println("Costumer ID: " + customer.getId());
-        System.out.println("Total costs: " + totalCost + " ĐôLaMỹ");
-        setWriter();
+        System.out.println("Total costs: " + totalCost + " USD");
+
         System.out.println();
+        setWriter();
     }
+
     public void setWriter(){
-        readerWriter.writeFile(bookingArrayList,"booking.txt");
+        readerWriter.writeFile(bookings,"booking.txt");
     }
 }

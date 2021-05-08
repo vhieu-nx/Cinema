@@ -1,6 +1,8 @@
 package model;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
 
 	int id;
 	String name;
@@ -9,7 +11,10 @@ public class Customer {
 	int streetNumber;
 	int plz;
 	String city;
-	
+
+	public Customer() {
+	}
+
 	public Customer(int id)
 	{
 		this.id = id;

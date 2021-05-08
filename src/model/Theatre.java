@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Theatre {
+public class Theatre implements Serializable {
 
 	private int theatreNumber;
 	private String description;
