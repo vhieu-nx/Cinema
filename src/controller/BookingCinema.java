@@ -20,6 +20,7 @@ public class BookingCinema {
 
 
 
+
     private static BookingCinema INSTANCE;
     private BookingCinema(){
 
@@ -30,10 +31,12 @@ public class BookingCinema {
     }
 
     public  void cancelBooking() {
-
         System.out.println("CANCEL BOOKING Selected");
         System.out.println("-------------------------\n");
         System.out.print("Enter the costumer id: ");
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println("Customer ID :" + customers.get(i).getId());
+        }
         int customerId = new Scanner(System.in).nextInt();
         for (Customer customer : customers) {
             if (customer.getId() == customerId)
@@ -49,6 +52,8 @@ public class BookingCinema {
                     }
                 }
                 System.out.println("Your reservation has been canceled!");
+            }else {
+                System.out.println("Customer ID does not exist");
             }
         }
     }
@@ -59,6 +64,10 @@ public class BookingCinema {
         int costumerId = rnd.nextInt(999);
         Customer customer = new Customer(costumerId);
         customers.add(customer);
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println("ID " + customers.get(i).getId());
+        }
+
         for (int i = 0; i< shows.size(); i++)
         {
             int showNumber = i+1;
@@ -85,7 +94,7 @@ public class BookingCinema {
                 System.out.println("The seat is now reserved for you.");
             }
             else {
-                System.out.println("Sorry the seat is already reserved.");
+                System.err.println("Sorry the seat is already reserved.");
             }
             System.out.println();
             System.out.print("Enter 1 to reserve another seat or 2 to check out: ");
@@ -105,7 +114,6 @@ public class BookingCinema {
         }
         System.out.println("Costumer ID: " + customer.getId());
         System.out.println("Total costs: " + totalCost + " USD");
-
         System.out.println();
         setWriter();
     }

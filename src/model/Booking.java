@@ -1,8 +1,10 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Booking implements Serializable {
+	private static final long serialVersionUID = 2505055924435597338L;
 
 	int cost;
 	Customer costumer;
@@ -25,7 +27,10 @@ public class Booking implements Serializable {
 		this.seatNumber = seatNumber;
 	}
 
-	public int getCost()
+    public Booking(ArrayList<Customer> customers, Show show) {
+    }
+
+    public int getCost()
 	{
 		if(show.getTheatre().getRows().get(rowNumber).getRowClass() == 1) {
 			return cost += 8;

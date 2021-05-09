@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Theatre implements Serializable {
 
+
 	private int theatreNumber;
 	private String description;
 	private int rowCount;

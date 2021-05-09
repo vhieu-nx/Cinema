@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AccountManager {
-//    Scanner scanner = new Scanner(System.in);
     private Account account;
 
     private ReaderWriter readerWriter = ReaderWriter.getINSTANCE();
@@ -30,6 +29,7 @@ public class AccountManager {
             System.out.println("Enter your username account");
             name = new Scanner(System.in).nextLine();
         }while (!name.matches(CheckAcount.CHECK_ACCOUNT));
+
         return name;
     }
     private String enterPassword(){
@@ -56,6 +56,7 @@ public class AccountManager {
             listAccount.add(account);
             setWriter();
         }
+
     }
     public boolean loginAccount (){
         String username = enterNameAccount();
@@ -86,5 +87,6 @@ public class AccountManager {
     public void setWriter(){
         readerWriter.writeFile(listAccount,"account.txt");
     }
+
 
 }

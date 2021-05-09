@@ -13,12 +13,35 @@ public class Cinema {
     static final BookingCinema bookingCinema = BookingCinema.getINSTANCE();
     static final TheatreManager theatreManager = TheatreManager.getINSTANCE();
     static final ShowManager showManager = ShowManager.getINSTANCE();
-    static final RowManager rowManager = RowManager.getINSTANCE();
+    static final CustomerManager customerManager = CustomerManager.getINSTANCE();
 
 
     public static void main(String[] args) {
         loginCinema();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static void loginCinema() {
         Scanner scanner = new Scanner(System.in);
@@ -32,11 +55,11 @@ public class Cinema {
             switch (chooseSelectOptionAccount) {
                 case "1":
                     if (!acountManager.loginAccount()) {
+
                         System.out.println("Login fails, username or password is incorrect");
                     } else {
                         System.out.println("Login successfully");
                         mainMenuCinema();
-
                     }
                     break;
                 case "2":
@@ -53,41 +76,31 @@ public class Cinema {
 
     private static void mainMenuCinema() {
         int option = 0;
-        ArrayList<Show> shows = new ArrayList<Show>();
-        ArrayList<Theatre> theatres = new ArrayList<Theatre>();
-        ArrayList<Booking> bookings = new ArrayList<Booking>();
-//		BookingCinema bookingCinema = new BookingCinema();
-        ArrayList<Customer> customers = new ArrayList<Customer>();
         Scanner select = new Scanner(System.in);
-        Scanner choice = new Scanner(System.in);
         do {
             DisplayMenu.displayMenu();
-
             System.out.print("Enter Option: ");
             option = select.nextInt();
             if (option == 1) {
                 theatreManager.addTheatre();
             }
-
             if (option == 2) {
                 showManager.addShow();
             }
-
-
             if (option == 3) {
                 showManager.disPlayShow();
-
             }
             if (option == 4) {
                 bookingCinema.makeBooking();
-//					makeBooking(shows, bookings, customers, choice);
             }
             if (option == 5) {
                 bookingCinema.cancelBooking();
-                System.out.println();
             }
-
-            if (option == 6) {
+            if (option == 7) {
+                customerManager.createCustomer();
+//                customerManager.getInformation();
+            }
+            if (option == 8) {
                 System.exit(0);
             }
         } while (true);

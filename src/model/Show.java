@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Show implements Serializable {
-	
+
 	private String showName;
 	private String showDate;
 	private Theatre theatre;
@@ -76,6 +76,5 @@ public class Show implements Serializable {
 	{
 		return seats;
 	}
-
 
 }

@@ -4,22 +4,30 @@ import java.io.Serializable;
 
 public class Customer implements Serializable {
 
-	int id;
-	String name;
-	String surname;
-	String street;
-	int streetNumber;
-	int plz;
-	String city;
 
+	private int id;
+	private String name;
+	private String surname;
+	private String street;
+	private int streetNumber;
+	private int plz;
+	private String city;
 	public Customer() {
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setPlz(int plz) {
+		this.plz = plz;
 	}
 
 	public Customer(int id)
 	{
 		this.id = id;
 	}
-	
+
 	public int getId()
 	{
 		return id;

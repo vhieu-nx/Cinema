@@ -22,7 +22,9 @@ public class ReaderWriter<E> {
             FileOutputStream fileOutputStream = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(arrayList);
+
             objectOutputStream.close();
+            sleep();
             fileOutputStream.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -39,6 +41,7 @@ public class ReaderWriter<E> {
                 ObjectInputStream objectInputStream  = new ObjectInputStream(fileInputStream);
                 arrayList = (ArrayList<E>) objectInputStream.readObject();
                 objectInputStream.close();
+                sleep();
                 fileInputStream.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -49,6 +52,13 @@ public class ReaderWriter<E> {
             }
         }
         return arrayList;
+    }
+    private void sleep() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
