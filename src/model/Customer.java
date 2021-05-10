@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class Customer implements Serializable {
-
+	private static final long serialVersionUID = 1017926365900620476L;
 
 	private int id;
 	private String name;
@@ -13,6 +13,30 @@ public class Customer implements Serializable {
 	private int plz;
 	private String city;
 	public Customer() {
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public int getStreetNumber() {
+		return streetNumber;
+	}
+
+	public int getPlz() {
+		return plz;
+	}
+
+	public String getCity() {
+		return city;
 	}
 
 	public void setId(int id) {
@@ -73,13 +97,6 @@ public class Customer implements Serializable {
 	@Override
 	public String toString() {
 		return "Customer{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", surname='" + surname + '\'' +
-				", street='" + street + '\'' +
-				", streetNumber=" + streetNumber +
-				", plz=" + plz +
-				", city='" + city + '\'' +
-				'}';
+				"id=" + id;
 	}
 }

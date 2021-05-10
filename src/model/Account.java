@@ -5,7 +5,7 @@ import storage.ReaderWriter;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-
+    private static final long serialVersionUID = 8761248225242369365L;
     private String username;
     private String password;
     private String email;

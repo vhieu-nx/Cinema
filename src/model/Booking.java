@@ -1,11 +1,13 @@
 package model;
 
+import controller.BookingCinema;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Booking implements Serializable {
-	private static final long serialVersionUID = 2505055924435597338L;
 
+	private static final long serialVersionUID = -6323485282545566727L;
 	int cost;
 	Customer costumer;
 	Show show;
@@ -27,7 +29,19 @@ public class Booking implements Serializable {
 		this.seatNumber = seatNumber;
 	}
 
-    public Booking(ArrayList<Customer> customers, Show show) {
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+
+	public void setCostumer(Customer costumer) {
+		this.costumer = costumer;
+	}
+
+	public void setShow(Show show) {
+		this.show = show;
+	}
+
+	public Booking(ArrayList<Customer> customers, Show show) {
     }
 
     public int getCost()
@@ -60,6 +74,7 @@ public class Booking implements Serializable {
     		show.getTheatre().getRows().get(selectedRow).getSeats().get(selectedSeat).reserve();
     		setRowNumber(selectedRow);
     		setSeatNumber(selectedSeat);
+
     		return true;
     	}
 	}
@@ -79,11 +94,21 @@ public class Booking implements Serializable {
 	public boolean unreserveSeat()
 	{
     		show.getTheatre().getRows().get(rowNumber).getSeats().get(seatNumber).unreserve();
+
     		return true;
 	}
 	
 	public Customer getCostumer()
 	{
 		return costumer;
+	}
+
+	@Override
+	public String toString() {
+		return "Booking{" +
+				"cost=" + cost +
+				", costumer=" + costumer +
+				", show=" + show +
+				'}';
 	}
 }

@@ -1,9 +1,12 @@
 package model;
 
+import controller.BookingCinema;
+
 import java.io.Serializable;
 
 public class Seat implements Serializable {
-	
+	static final BookingCinema bookingCinema = BookingCinema.getINSTANCE();
+	private static final long serialVersionUID =-477667091415244719L;
 	int seatNumber;
 	boolean isReserved;
 	
@@ -37,6 +40,13 @@ public class Seat implements Serializable {
 	public void unreserve()
 	{
 		isReserved = false;
-	}	
+//		bookingCinema.setWriter();
+	}
 
+	@Override
+	public String toString() {
+		return "Seat{" +
+				"seatNumber=" + seatNumber +
+				'}';
+	}
 }

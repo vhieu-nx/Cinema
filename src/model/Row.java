@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Row implements Serializable {
-
-	
+	private static final long serialVersionUID = 8411877643763826180L;
 	private ArrayList<Seat> seats;
 	private int rowNumber; 
 	private int rowClass;
@@ -46,5 +45,15 @@ public class Row implements Serializable {
 	public ArrayList<Seat> getSeats()
 	{
 		return seats;
+	}
+
+	@Override
+	public String toString() {
+		return "Row{" +
+				"seats=" + seats +
+				", rowNumber=" + rowNumber +
+				", rowClass=" + rowClass +
+				", seatCount=" + seatCount +
+				'}';
 	}
 }

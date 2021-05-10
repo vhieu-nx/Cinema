@@ -96,13 +96,28 @@ public class Cinema {
             if (option == 5) {
                 bookingCinema.cancelBooking();
             }
-            if (option == 7) {
-                customerManager.createCustomer();
-//                customerManager.getInformation();
+            if (option == 6) {
+                bookingCinema.disPlayBooking();
             }
             if (option == 8) {
+                customerManager.createCustomer();
+            }
+            if (option == 9){
+                customerManager.disPlayBooking();
+            }
+            if (option == 10) {
                 System.exit(0);
             }
+            // System.out.println("Please Enter 1 to Add Theatre");
+            //        System.out.println("Please Enter 2 to Add Show");
+            //        System.out.println("Please Enter 3 to Display Shows");
+            //        System.out.println("Please Enter 4 to Make Booking");
+            //        System.out.println("Please Enter 5 to Cancel Booking");
+            //        System.out.println("Please Enter 6 to Display Booking");
+            //        System.out.println("Please Enter 7 to reader file");
+            //        System.out.println("Please Enter 8 to Customer add");
+            //        System.out.println("Please Enter 9 to Customer show");
+            //        System.out.println("Please Enter 10 to Exit \n");
         } while (true);
     }
 }

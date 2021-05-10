@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class CustomerManager {
     static final ArrayList<Customer> customers = new ArrayList<>();
+    static final BookingCinema bookingCinema = BookingCinema.getINSTANCE();
     private Customer customer;
 
     private ReaderWriter readerWriter = ReaderWriter.getINSTANCE();
@@ -71,15 +72,38 @@ public class CustomerManager {
     }
     public void createCustomer(){
         Customer customer = new Customer();
-        customer.setId(enterNameID());
+//        customer.setId(enterNameID());
         customer.setName(enterName());
         customer.setSurname(enterSurName());
         customer.setStreet(enterStreet());
         customer.setStreetNumber(enterStreetNumber());
         customer.setPLZ(enterplzNumber());
         customer.setCity(enterCity());
-        customers.add(customer);
+        customerArrayList.add(customer);
         setWriter();
+    }
+    public  void disPlayBooking(){
+        System.out.println("DISPLAY Customer Selected");
+        System.out.println("-------------------------\n");
+        for (int i = 0; i < customerArrayList.size(); i++) {
+//            System.out.println("Customer ID: " + customerArrayList.get(i).getId());
+//            System.out.println("Customer ID: " + bookingCinema.to.get(i).getCostumer());
+            System.out.println("Customer Name: " + customerArrayList.get(i).getName());
+            System.out.println("Customer Surname: " + customerArrayList.get(i).getSurname());
+            System.out.println("Customer Street: " + customerArrayList.get(i).getStreet());
+            System.out.println("Customer StreetNumber: " + customerArrayList.get(i).getStreetNumber());
+            System.out.println("Customer PLZ: " + customerArrayList.get(i).getPlz());
+            System.out.println("Customer City: " + customerArrayList.get(i).getCity());
+
+            System.out.println("\n");
+//            private int id;
+//            private String name;
+//            private String surname;
+//            private String street;
+//            private int streetNumber;
+//            private int plz;
+//            private String city;
+        }
     }
     public void setWriter(){
         readerWriter.writeFile(customerArrayList,"customer.txt");

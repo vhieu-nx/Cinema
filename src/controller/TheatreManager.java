@@ -17,12 +17,10 @@ public class TheatreManager {
     private TheatreManager() {
 
     }
-
     public static TheatreManager getINSTANCE() {
         if (INSTANCE == null) INSTANCE = new TheatreManager();
         return INSTANCE;
     }
-
     //    public void createRows(int rowClass, int seatCount, int rowCount)
 //    {
 //        for (int i = 1; i <= rowCount; i++)
@@ -31,7 +29,7 @@ public class TheatreManager {
 //        }
 //        this.rowCount += rowCount;
 //    }
-    public   void addTheatre() {
+    public  void addTheatre() {
         System.out.println("ADD THEATRE Selected");
         System.out.println("-------------------------\n");
         System.out.print("Enter a name for the theatre: \n");
@@ -46,7 +44,6 @@ public class TheatreManager {
         theatres.add(theatre);
         setWriter();
     }
-
     public void setWriter() {
         readerWriter.writeFile(theatres, "theatre.txt");
     }

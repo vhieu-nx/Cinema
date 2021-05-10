@@ -33,17 +33,34 @@ public class BookingCinema {
     public  void cancelBooking() {
         System.out.println("CANCEL BOOKING Selected");
         System.out.println("-------------------------\n");
-        System.out.print("Enter the costumer id: ");
-        for (int i = 0; i < customers.size(); i++) {
-            System.out.println("Customer ID :" + customers.get(i).getId());
+        for (int i = 0; i < bookings.size(); i++) {
+            System.out.println("ID " +  bookings.get(i).getCostumer());
+            System.out.println("Row: "+ bookings.get(i).getRowNumber());
+            System.out.println("Seat: "+ bookings.get(i).getSeatNumber());
+
         }
+        System.out.print("Enter the costumer id: ");
+
         int customerId = new Scanner(System.in).nextInt();
-        for (Customer customer : customers) {
-            if (customer.getId() == customerId)
+//        for (int i = 0; i < customers.size(); i++) {
+//            if (customers.get(i).getId() == customerId){
+//                for (int j = 0; j < customers.size(); j++) {
+//                    if (bookings.get(i).getCostumer().getId() == customers.get(i).getId()){
+//                        if (bookings.get(i).unreserveSeat()){
+//                            System.out.println("Your reservation has been canceled!");
+//                            setWriter();
+//                        }
+//                    }
+//                }
+//
+//            }
+//        }
+        for (Booking customer : bookings) {
+            if (customer.getCostumer().getId() == customerId)
             {
                 for(Booking booking : bookings)
                 {
-                    if (booking.getCostumer().getId() == customer.getId())
+                    if (booking.getCostumer().getId() == customer.getCostumer().getId())
                     {
                         if (booking.unreserveSeat())
                         {
@@ -51,10 +68,15 @@ public class BookingCinema {
                         }
                     }
                 }
-                System.out.println("Your reservation has been canceled!");
-            }else {
-                System.out.println("Customer ID does not exist");
+
             }
+            System.out.println("Your reservation has been canceled!");
+
+
+//            else {
+//                System.out.println("Customer ID does not exist");
+//            }
+
         }
     }
     public void makeBooking() {
@@ -64,9 +86,7 @@ public class BookingCinema {
         int costumerId = rnd.nextInt(999);
         Customer customer = new Customer(costumerId);
         customers.add(customer);
-        for (int i = 0; i < customers.size(); i++) {
-            System.out.println("ID " + customers.get(i).getId());
-        }
+
 
         for (int i = 0; i< shows.size(); i++)
         {
@@ -99,7 +119,7 @@ public class BookingCinema {
             System.out.println();
             System.out.print("Enter 1 to reserve another seat or 2 to check out: ");
             repeat = new Scanner(System.in).nextInt();
-        } while (repeat == 1);
+        } while (repeat == 1) ;
         System.out.println();
         System.out.println("Your Bill");
         System.out.println("-------------------------");
@@ -109,15 +129,32 @@ public class BookingCinema {
             if (booking.getCostumer().getId() == customer.getId())
             {
                 totalCost += booking.getCost();
+
             }
 
         }
         System.out.println("Costumer ID: " + customer.getId());
         System.out.println("Total costs: " + totalCost + " USD");
         System.out.println();
-        setWriter();
-    }
 
+    }
+    public  void disPlayBooking(){
+        System.out.println("DISPLAY Booking Selected");
+        System.out.println("-------------------------\n");
+        for (int i = 0; i < bookings.size(); i++) {
+            System.out.println("Booking Cost: " + bookings.get(i).getCost() + "  USD");
+            System.out.println("Booking Customer: " + bookings.get(i).getCostumer());
+            System.out.println("Booking Show : " + bookings.get(i).getShow().getSeats());
+//            System.out.println("Booking rowNumber : " + bookings.get(i).getRowNumber());
+//            System.out.println("Booking seatNumber : " + bookings.get(i).getSeatNumber());
+            System.out.println("\n");
+            //int cost;
+            //	Customer costumer;
+            //	Show show;
+            //	int rowNumber;
+            //	int seatNumber;
+        }
+    }
     public void setWriter(){
         readerWriter.writeFile(bookings,"booking.txt");
     }

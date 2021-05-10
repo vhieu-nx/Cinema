@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Show implements Serializable {
 
+	private static final long serialVersionUID = 7271433672274582567L;
 	private String showName;
 	private String showDate;
 	private Theatre theatre;
@@ -77,4 +78,12 @@ public class Show implements Serializable {
 		return seats;
 	}
 
+	@Override
+	public String toString() {
+		return "Show{" +
+				"showName='" + showName + '\'' +
+				", showDate='" + showDate + '\'' +
+				", theatre=" + theatre +
+				'}';
+	}
 }

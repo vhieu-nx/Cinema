@@ -4,9 +4,10 @@ import model.Row;
 import model.Seat;
 import storage.ReaderWriter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SeatManager {
+public class SeatManager implements Serializable {
     private Seat seat;
 
     private ReaderWriter readerWriter = ReaderWriter.getINSTANCE();

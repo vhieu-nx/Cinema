@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Theatre implements Serializable {
+	private static final long serialVersionUID = 8150248741120473670L;
 
 
 	private int theatreNumber;
@@ -86,5 +87,15 @@ public class Theatre implements Serializable {
             System.out.print("\n");
         }
         System.out.print("\n");
+	}
+
+	@Override
+	public String toString() {
+		return "Theatre{" +
+				"theatreNumber=" + theatreNumber +
+				", description='" + description + '\'' +
+				", rowCount=" + rowCount +
+				", rows=" + rows +
+				'}';
 	}
 }
